@@ -496,7 +496,10 @@ footer .side-nav-footer a:hover {
 
 /* gd */
 /* ========== MAIN CONTENT ========== */
+
 .content {
+  width: 100%;
+  margin-left: 3rem;
   flex: 1;
   padding: 2rem;
   background: #FDFDFD;
@@ -512,6 +515,7 @@ footer .side-nav-footer a:hover {
   padding: 1rem 1.5rem;
   border-radius: 12px;
   margin-bottom: 1.5rem;
+  width: 1000px;
 }
 
 .goal-header h1 {
