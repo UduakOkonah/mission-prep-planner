@@ -324,7 +324,6 @@ footer .side-nav-footer a:hover {
 =============================== */
 
 .goals-page.container {
-  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -333,7 +332,6 @@ footer .side-nav-footer a:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
-  width: 100%;
   max-width: 1000px;
   margin-top: 2rem;
 }
@@ -515,7 +513,6 @@ footer .side-nav-footer a:hover {
   padding: 1rem 1.5rem;
   border-radius: 12px;
   margin-bottom: 1.5rem;
-  width: 1000px;
 }
 
 .goal-header h1 {
@@ -575,7 +572,7 @@ footer .side-nav-footer a:hover {
 
 /* ========== PROGRESS SECTION ========== */
 .progress-bar {
-  width: 100%;
+  width: 1000px;
   height: 12px;
   background: #E0E0E0;
   border-radius: 10px;
