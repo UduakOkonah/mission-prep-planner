@@ -1,0 +1,202 @@
+/* ======================
+   MOBILE RESPONSIVE
+====================== */
+
+/* Mobile first: collapse side nav */
+@media (max-width: 768px) {
+
+/* Header fixed at top */
+header {
+top: 0;
+left: 0;
+width: 100%;
+z-index: 1001;
+padding: 1rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #eee;
+box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+header .logo {
+  font-size: 1.1rem;
+}
+
+.menu-btn {
+  padding: 5px 50px;
+  display: block;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #333;
+  margin-left: auto;
+}
+
+.menu-btn:hover {
+    background: none;
+}
+
+.side-nav {
+    position: fixed;
+    top: 60px; /* header height */
+    left: -260px; /* hidden initially */
+    width: 250px;
+    height: calc(100% - 60px);
+    background-color: #4CAF50;
+    z-index: 1000;
+    padding: 1rem 0;
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+  }
+
+  .side-nav.active {
+    left: 0;
+  }
+
+  .side-nav nav a {
+    font-size: 1rem;
+    display: block;
+  }
+
+  .side-nav-overlay {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 60px);
+    background: rgba(0,0,0,0.4);
+    z-index: 900;
+  }
+
+  .side-nav-overlay.active {
+    display: block;
+  }
+
+  .dashboard-main {
+    margin-top: 60px;
+    padding: 1rem;
+  }
+
+/* Dashboard container stacks vertically */
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+
+  /* Dashboard main adjusts */
+  .dashboard-main {
+    margin-left: 60px;
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  /* Header adjustments */
+  header {
+    padding: 1rem;
+  }
+
+  header .logo {
+    font-size: 1.1rem;
+  }
+
+  header .user-menu img {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* Goal page container */
+  .goals-page.container {
+    padding: 1rem;
+  }
+
+  /* Goal cards stacked */
+  .goal-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .goal-card {
+    padding: 1rem;
+  }
+
+  /* Goal form adjusts */
+  .goal-form {
+    padding: 1.5rem 1rem;
+  }
+
+  .goal-form button {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Checklist items full width */
+  .checklist-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .checklist-item .delete-btn {
+    align-self: flex-end;
+  }
+
+  /* Analytics container stacked */
+  #analytics-container {
+    flex-direction: column;
+  }
+
+  .analytics-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Progress bars smaller */
+  .progress-container-bar,
+  .progress-bar {
+    height: 18px;
+  }
+
+  /* Notes textarea full width */
+  textarea {
+    min-height: 80px;
+  }
+
+  /* Inputs full width */
+  input[type="text"],
+  input[type="number"] {
+    width: 100%;
+  }
+
+  .add-checklist {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* Slightly larger mobile / tablets */
+@media (max-width: 1024px) {
+  .dashboard-main {
+    padding: 1.5rem;
+  }
+
+  header .logo {
+    font-size: 1.2rem;
+  }
+
+  .goal-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .goal-form input,
+  .goal-form textarea {
+    font-size: 0.95rem;
+  }
+
+  button, .goal-form button {
+    font-size: 0.95rem;
+  }
+}

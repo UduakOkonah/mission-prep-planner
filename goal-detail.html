@@ -4,19 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Goal Detail - Mission Prep Planner</title>
-  <link rel="stylesheet" href="styles/base.css">
   <link rel="stylesheet" href="styles/dashboard.css">
-  <link rel="stylesheet" href="styles/responsive.css">
+  <link rel="stylesheet" href="styles/dashboard-small.css">
   <link rel="stylesheet" href="styles/animations.css">
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <img src="assets/backpack-icon.png" alt="Logo">
-      <span>Mission Prep Planner</span>
-    </div>
-  </header>
+    <header>
+        <div class="logo">
+            <img src="assets/backpack-icon.png" alt="Logo">
+            <span>Mission Prep Planner</span>
+        </div>
+          </div>
+  <button class="menu-btn" aria-label="Open Menu">&#9776;</button>
+  <div class="user-menu">
+    </header>
+ <div class="dashboard-container">
 
+    <!-- Overlay for mobile menu -->
+  <div class="side-nav-overlay"></div>
   <div class="dashboard-container">
     <!-- Sidebar -->
     <aside class="side-nav">
@@ -71,7 +76,16 @@
     </main>
   </div>
 
+    <footer>
+        <div class="side-nav-footer">
+        <a href="#">Export/Print</a>
+        <a href="#">Notifications</a>
+        <a href="#">Settings</a>
+      </div>
+  </footer>
+
   <script src="scripts/storage.js"></script>
   <script src="scripts/goal-detail.js"></script>
+  <script src="scripts/menu.js"></script>
 </body>
 </html>

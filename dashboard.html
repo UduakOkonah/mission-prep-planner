@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Dashboard - Mission Prep Planner</title>
   <link rel="stylesheet" href="styles/dashboard.css">
-  <link rel="stylesheet" href="styles/responsive.css">
+  <link rel="stylesheet" href="styles/dashboard-small.css">
   <link rel="stylesheet" href="styles/animations.css">
 </head>
 <body>
@@ -13,8 +13,14 @@
             <img src="assets/backpack-icon.png" alt="Logo">
             <span>Mission Prep Planner</span>
         </div>
+          </div>
+  <button class="menu-btn" aria-label="Open Menu">&#9776;</button>
+  <div class="user-menu">
     </header>
  <div class="dashboard-container">
+
+    <!-- Overlay for mobile menu -->
+  <div class="side-nav-overlay"></div>
     <!-- Side Nav -->
     <aside class="side-nav">
       <nav>
@@ -65,5 +71,6 @@
   <script src="scripts/storage.js"></script>
   <script src="scripts/dashboard.js"></script>
   <script src="scripts/api.js"></script>
+  <script src="scripts/menu.js"></script>
 </body>
 </html>

@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Goals - Mission Prep Planner</title>
-  <link rel="stylesheet" href="styles/base.css">
+   <link rel="stylesheet" href="styles/base.css">
   <link rel="stylesheet" href="styles/dashboard.css">
-  <link rel="stylesheet" href="styles/responsive.css">
+  <link rel="stylesheet" href="styles/dashboard-small.css">
   <link rel="stylesheet" href="styles/animations.css">
 </head>
 <body>
@@ -15,7 +15,14 @@
             <img src="assets/backpack-icon.png" alt="Logo">
             <span>Mission Prep Planner</span>
         </div>
+          </div>
+  <button class="menu-btn" aria-label="Open Menu">&#9776;</button>
+  <div class="user-menu">
     </header>
+ <div class="dashboard-container">
+
+    <!-- Overlay for mobile menu -->
+  <div class="side-nav-overlay"></div>
  <div class="dashboard-container">
     <!-- Side Nav -->
     <aside class="side-nav">
@@ -23,9 +30,8 @@
         <a href="index.html">Home</a>
         <a href="dashboard.html" class="active">Dashboard</a>
         <a href="goals.html">Goals</a>
-        <a href="goals.html#checklist">Checklist</a>
+        <a href="dashboard.html#tasks-section">Checklist</a>
         <a href="dashboard.html#progress-section">Progress</a>
-        <a href="dashboard.html#notes-section">Notes</a>
         <a href="resources.html">Resources</a>
         <a href="dashboard.html#settings">Settings</a>
       </nav>
@@ -46,8 +52,17 @@
         </section>
   </main>
 
+    <footer>
+        <div class="side-nav-footer">
+        <a href="#">Export/Print</a>
+        <a href="#">Notifications</a>
+        <a href="#">Settings</a>
+      </div>
+  </footer>
+
 <script src="scripts/storage.js"></script>
 <script src="scripts/goals.js"></script>
+<script src="scripts/menu.js"></script>
 
 </body>
 </html>
