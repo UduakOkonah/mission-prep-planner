@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" data-page="resources">
+<head>
+  <meta charset="UTF-8">
+  <title>Resources - Mission Prep Planner</title>
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/dashboard.css">
+  <link rel="stylesheet" href="styles/responsive.css">
+  <link rel="stylesheet" href="styles/animations.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/backpack-icon.png" alt="Logo">
+            <span>Mission Prep Planner</span>
+        </div>
+    </header>
+ <div class="dashboard-container">
+    <!-- Side Nav -->
+    <aside class="side-nav">
+      <nav class="side-nav-footer">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="goals.html">Goals</a>
+        <a href="goals.html#checklist">Checklist</a>
+        <a href="dashboard.html#progress-section">Progress</a>
+        <a href="dashboard.html#notes-section">Notes</a>
+        <a href="resources.html">Resources</a>
+        <a href="dashboard.html#settings">Settings</a>
+      </nav>
+    </aside>
+
+  <main>
+    <section>
+      <h2>Add New Resource</h2>
+      <form id="resource-form">
+        <input type="text" id="resource-name" placeholder="Resource Name" required>
+        <input type="url" id="resource-link" placeholder="Link" required>
+        <input type="number" id="resource-goal" placeholder="Goal ID" required>
+        <button type="submit">Add Resource</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>All Resources</h2>
+      <div id="resources-list"></div>
+    </section>
+  </main>
+
+  <script src="scripts/storage.js"></script>
+  <script src="scripts/resources.js"></script>
+</body>
+</html>

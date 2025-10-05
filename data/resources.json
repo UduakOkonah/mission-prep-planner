@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Duolingo Spanish Course",
+    "link": "https://www.duolingo.com/course/es/en/Learn-Spanish",
+    "goalId": 1
+  },
+  {
+    "id": 2,
+    "name": "Spanish Grammar Guide PDF",
+    "link": "https://www.spanishdict.com/guide/spanish-grammar",
+    "goalId": 1
+  },
+  {
+    "id": 3,
+    "name": "Scripture Study App",
+    "link": "https://www.churchofjesuschrist.org/study/scriptures",
+    "goalId": 2
+  },
+  {
+    "id": 4,
+    "name": "Exercise Routine Video",
+    "link": "https://www.youtube.com/watch?v=UItWltVZZmE",
+    "goalId": 3
+  },
+  {
+    "id": 5,
+    "name": "French Listening Exercises",
+    "link": "https://www.bbc.co.uk/languages/french/lj/intro.shtml",
+    "goalId": 4
+  }
+]

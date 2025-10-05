@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Goal Detail - Mission Prep Planner</title>
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/dashboard.css">
+  <link rel="stylesheet" href="styles/responsive.css">
+  <link rel="stylesheet" href="styles/animations.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="assets/backpack-icon.png" alt="Logo">
+      <span>Mission Prep Planner</span>
+    </div>
+  </header>
+
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="side-nav">
+      <nav class="side-nav-footer">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="goals.html" class="active">Goals</a>
+        <a href="resources.html">Resources</a>
+        <a href="dashboard.html#settings">Settings</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+      <section class="goal-header">
+        <h1 id="goalTitle">Goal Title</h1>
+        <p id="goalDescription">Goal description will appear here.</p>
+      </section>
+
+      <!-- Checklist Section -->
+      <section id="checklistSection" class="goal-section">
+        <h2>Checklist</h2>
+        <div class="checklist-container">
+          <ul id="checklist"></ul>
+          <div class="add-checklist">
+            <input type="text" id="newChecklistItem" placeholder="Add new checklist item">
+            <button id="addChecklistBtn">Add</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Progress Section -->
+      <section id="progressSection" class="goal-section">
+        <h2>Progress</h2>
+        <div class="progress-container">
+          <label for="progressInput">Update progress (%)</label>
+          <input type="number" id="progressInput" min="0" max="100">
+          <button id="updateProgressBtn">Update</button>
+          <div class="progress-bar">
+            <div id="progressFill"></div>
+          </div>
+          <p id="progressText">Progress: 0%</p>
+        </div>
+      </section>
+
+      <!-- Notes Section -->
+      <section id="notesSection" class="goal-section">
+        <h2>Notes</h2>
+        <textarea id="notesInput" placeholder="Write your thoughts or study notes..."></textarea>
+        <button id="saveNotesBtn">Save Notes</button>
+      </section>
+    </main>
+  </div>
+
+  <script src="scripts/storage.js"></script>
+  <script src="scripts/goal-detail.js"></script>
+</body>
+</html>

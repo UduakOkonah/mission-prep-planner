@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "goalId": 1,
+    "taskName": "Practice Spanish vocabulary for 30 minutes",
+    "completed": false
+  },
+  {
+    "id": 2,
+    "goalId": 1,
+    "taskName": "Review Spanish grammar notes",
+    "completed": false
+  },
+  {
+    "id": 3,
+    "goalId": 2,
+    "taskName": "Read one chapter of scripture",
+    "completed": false
+  },
+  {
+    "id": 4,
+    "goalId": 2,
+    "taskName": "Write daily reflection in journal",
+    "completed": false
+  },
+  {
+    "id": 5,
+    "goalId": 3,
+    "taskName": "Morning workout (15 minutes cardio)",
+    "completed": false
+  },
+  {
+    "id": 6,
+    "goalId": 3,
+    "taskName": "Evening stretching (15 minutes)",
+    "completed": false
+  },
+  {
+    "id": 7,
+    "goalId": 4,
+    "taskName": "Practice French listening exercises",
+    "completed": false
+  },
+  {
+    "id": 8,
+    "goalId": 4,
+    "taskName": "Speak with language partner for 15 minutes",
+    "completed": false
+  }
+]

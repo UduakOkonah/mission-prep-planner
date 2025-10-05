@@ -1,0 +1,71 @@
+[
+  {
+    "id": "172812391",
+    "title": "Learn Preach My Gospel",
+    "category": "Spiritual",
+    "description": "Study one lesson daily",
+    "deadline": "2025-12-20",
+    "progress": 60,
+    "checklist": [
+      { "text": "Finish Lesson 1", "done": true },
+      { "text": "Lesson 2 tomorrow", "done": false }
+    ],
+    "notes": "Need to focus more on section 3"
+  },
+  {
+    "id": "1",
+    "title": "Learn Spanish Basics",
+    "category": "Language",
+    "description": "Practice daily vocabulary and grammar.",
+    "deadline": "2025-12-01",
+    "progress": 20,
+    "checklist": [
+      { "text": "Learn 20 basic words", "done": true },
+      { "text": "Practice greetings", "done": false },
+      { "text": "Review verbs", "done": false }
+    ],
+    "notes": "Focus more on pronunciation and listening."
+  },
+  {
+    "id": "2",
+    "title": "Daily Scripture Study",
+    "category": "Spiritual",
+    "description": "Read 1 chapter each day and take notes.",
+    "deadline": "2025-12-31",
+    "progress": 40,
+    "checklist": [
+      { "text": "Genesis 1-5", "done": true },
+      { "text": "Exodus 1-3", "done": true },
+      { "text": "Leviticus 1", "done": false }
+    ],
+    "notes": "Try morning sessions for better focus."
+  },
+  {
+    "id": "3",
+    "title": "Exercise Routine",
+    "category": "Health",
+    "description": "Follow daily 30-minute routine for fitness.",
+    "deadline": "2025-12-31",
+    "progress": 50,
+    "checklist": [
+      { "text": "Morning jog (15 mins)", "done": true },
+      { "text": "Stretching exercises", "done": true },
+      { "text": "Push-ups and sit-ups", "done": false }
+    ],
+    "notes": "Maintain consistency—avoid skipping weekends."
+  },
+  {
+    "id": "4",
+    "title": "Language Learning (French)",
+    "category": "Language",
+    "description": "Focus on speaking and listening practice.",
+    "deadline": "2026-01-15",
+    "progress": 10,
+    "checklist": [
+      { "text": "Learn basic greetings", "done": true },
+      { "text": "Practice pronunciation", "done": false },
+      { "text": "Watch a short French video", "done": false }
+    ],
+    "notes": "Listen to French podcasts for faster learning."
+  }
+]

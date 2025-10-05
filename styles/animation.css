@@ -1,0 +1,63 @@
+/* Hover animations for list items */
+li {
+  transition: all 0.3s ease;
+}
+
+li:hover {
+  background-color: #F1F8E9;
+  transform: translateX(5px);
+}
+
+/* Progress bar animation */
+.progress-filled {
+  background-color: #4CAF50;
+  height: 100%;
+  width: 0%;
+  border-radius: 8px;
+  transition: width 0.5s ease-in-out;
+}
+
+.progress-filled::after {
+  content: attr(data-progress) "%";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  height: 100%;
+}
+
+
+/* Button hover shadow */
+button:hover, .btn:hover {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transform: translateY(-2px);
+}
+
+/* Hover effect for progress bars */
+.progress-filled:hover {
+  filter: brightness(1.1);
+}
+
+/* Label animation: fade-in */
+.progress-wrapper span {
+  opacity: 0;
+  animation: fadeInLabel 1s forwards;
+}
+
+@keyframes fadeInLabel {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes progressPulse {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+#progressFill {
+  animation: progressPulse 2s infinite ease-in-out;
+}

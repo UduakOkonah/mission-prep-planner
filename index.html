@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-page="home">
+<head>
+  <meta charset="UTF-8">
+  <title>Mission Prep Planner</title>
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/responsive.css">
+  <link rel="stylesheet" href="styles/animation.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="scripts/script.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-container">
+      <div class="logo">
+        <img src="assets/backpack-icon.png" alt="Logo">
+        <span>Mission Prep Planner</span>
+      </div>
+
+      <nav class="nav" id="main-nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="goals.html">Goals</a>
+        <a href="resources.html">Resources</a>
+      </nav>
+
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  
+  <!-- Sidebar for mobile -->
+  <aside class="sidebar" id="sidebar">
+    <ul>
+      <li><a href="dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
+      <li><a href="goals.html"><i class="fa-solid fa-bullseye"></i> Goals</a></li>
+      <li><a href="resources.html"><i class="fa-solid fa-book"></i> Resources</a></li>
+    </ul>
+  </aside>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h2>Prepare for Your Mission with Clarity and Purpose</h2>
+        <p>Organize your study, track your progress, and stay motivated daily. Everything you need to succeed in one place.</p>
+        <a href="dashboard.html" class="btn hero-btn">Start Planning</a>
+      </div>
+      <div class="hero-image">
+        <img src="assets/image.png" alt="Planner Illustration">
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+      <h2>Key Features</h2>
+      <div class="feature-cards">
+        <div class="card">
+          <h3>Daily Checklist</h3>
+          <p>Stay consistent with your daily scripture, language practice, and personal goals.</p>
+        </div>
+        <div class="card">
+          <h3>Progress Tracker</h3>
+          <p>Visualize your growth with animated progress bars and charts.</p>
+        </div>
+        <div class="card">
+          <h3>Resource Library</h3>
+          <p>Keep study materials, links, and references all in one accessible place.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Mission Prep Planner</p>
+  </footer>
+
+</body>
+</html>
