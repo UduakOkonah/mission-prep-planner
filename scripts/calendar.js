@@ -1,4 +1,4 @@
-const CLIENT_ID = "YOUR_CLIENT_ID_HERE"; // required
+const CLIENT_ID = "791646561581-isasb62jc3l70ipaemmrg934aff3rhbn.apps.googleusercontent.com";
 const DISCOVERY_DOC = "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest";
 const SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
 
