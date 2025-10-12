@@ -7,14 +7,6 @@
 
 /* Header fixed at top */
 header {
-top: 0;
-left: 0;
-width: 100%;
-z-index: 1001;
-padding: 1rem;
-display: flex;
-justify-content: space-between;
-align-items: center;
 background-color: #eee;
 box-shadow: 0 3px 8px rgba(0,0,0,0.15);
 }
@@ -24,7 +16,6 @@ header .logo {
 }
 
 .menu-btn {
-  padding: 5px 50px;
   display: block;
   background: none;
   border: none;
@@ -91,7 +82,7 @@ header .logo {
   .dashboard-main {
     margin-left: 60px;
     padding: 1rem;
-    max-width: 100%;
+    max-width: 80%;
   }
 
   /* Header adjustments */
@@ -126,6 +117,7 @@ header .logo {
   /* Goal form adjusts */
   .goal-form {
     padding: 1.5rem 1rem;
+    width: 100%;
   }
 
   .goal-form button {
@@ -175,6 +167,43 @@ header .logo {
     flex-direction: column;
     align-items: stretch;
   }
+
+    .content {
+    margin-left: 0;
+    padding: 1rem;
+    border-radius: 0;
+  }
+
+  .goal-header h1 {
+    font-size: 1.3rem;
+  }
+
+  .goal-section {
+    padding: .8rem;
+  }
+
+  button {
+    width: 100%;
+    margin-top: .5rem;
+  }
+
+  .checklist-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .4rem;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    font-size: .9rem;
+  }
+
+  textarea {
+  width: 100%;
+}
+
+
 }
 
 /* Slightly larger mobile / tablets */

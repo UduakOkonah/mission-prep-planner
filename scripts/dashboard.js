@@ -111,18 +111,41 @@ function renderProgress() {
 // ==========================
 // Daily Quote
 // ==========================
-function loadQuote() {
-  const quoteText = document.getElementById("quote-text");
-  const quoteAuthor = document.getElementById("quote-author");
+document.addEventListener("DOMContentLoaded", async () => {
+  const container = document.getElementById("inspiration-content");
 
-  const quote = {
-    text: "Faith is taking the first step even when you don’t see the whole staircase.",
-    author: "Martin Luther King Jr."
-  };
+  try {
+    // Option 1: Try Daily Scripture API
+    const response = await fetch("https://beta.ourmanna.com/api/v1/get/?format=json");
+    if (!response.ok) throw new Error("Scripture API failed");
+    const data = await response.json();
+    const verse = data.verse.details.text;
+    const ref = data.verse.details.reference;
 
-  quoteText.textContent = quote.text;
-  quoteAuthor.textContent = "- " + quote.author;
-}
+    container.innerHTML = `
+      <blockquote>"${verse}"</blockquote>
+      <p>- ${ref}</p>
+    `;
+  } catch (scriptureError) {
+    try {
+      // Option 2: Fallback to Quote API
+      const res = await fetch("https://api.quotable.io/random");
+      if (!res.ok) throw new Error("Quote API failed");
+      const quoteData = await res.json();
+      container.innerHTML = `
+        <blockquote>"${quoteData.content}"</blockquote>
+        <p>- ${quoteData.author}</p>
+      `;
+    } catch (quoteError) {
+      // Option 3: Local Fallback
+      container.innerHTML = `
+        <blockquote>"Keep moving forward with faith."</blockquote>
+        <p>- Unknown</p>
+      `;
+    }
+  }
+});
+
 
 // ==========================
 // Weekly Analytics
@@ -178,7 +201,6 @@ function renderWeeklyAnalytics() {
 function initDashboard() {
   renderTasks();
   renderProgress();
-  loadQuote();
   renderWeeklyAnalytics();
 }
 

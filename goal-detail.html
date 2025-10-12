@@ -16,7 +16,7 @@
             <span>Mission Prep Planner</span>
         </div>
           </div>
-  <button class="menu-btn" aria-label="Open Menu">&#9776;</button>
+  <span class="menu-btn" aria-label="Open Menu">&#9776;</span>
   <div class="user-menu">
     </header>
  <div class="dashboard-container">
@@ -68,12 +68,37 @@
         </div>
       </section>
 
-      <!-- Notes Section -->
-      <section id="notesSection" class="goal-section">
-        <h2>Notes</h2>
+
+      <!-- Notes, Resources & Deadlines Section -->
+      <section id="notesResourcesSection" class="goal-section">
+      <h2>Notes, Resources & Deadlines</h2>
+
+      <!-- Notes -->
+      <div class="notes-container">
+        <h3>Notes</h3>
         <textarea id="notesInput" placeholder="Write your thoughts or study notes..."></textarea>
         <button id="saveNotesBtn">Save Notes</button>
-      </section>
+      </div>
+
+      <!-- Resources -->
+      <div class="resources-container">
+        <h3>Resources</h3>
+        <ul id="resourceList"></ul>
+        <div class="add-resource">
+          <input type="text" id="newResourceLink" placeholder="Add resource link (e.g. talk, scripture, or video)">
+          <button id="addResourceBtn">Add</button>
+        </div>
+      </div>
+
+      <!-- Deadline -->
+      <div class="deadline-container">
+        <h3>Deadline</h3>
+        <input type="date" id="deadlineInput">
+        <button id="saveDeadlineBtn">Save Deadline</button>
+        <p id="deadlineText"></p>
+      </div>
+    </section>
+
     </main>
   </div>
   <script src="scripts/storage.js"></script>

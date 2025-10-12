@@ -1,4 +1,3 @@
-// storage.js
 function getGoals() {
   return JSON.parse(localStorage.getItem("goals")) || [];
 }

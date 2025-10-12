@@ -1,93 +1,131 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const sidebar = document.getElementById("sidebar");
-  const menuToggle = document.getElementById("menu-toggle");
-
-  menuToggle.addEventListener("click", () => {
-    const isOpen = sidebar.classList.toggle("open");
-    document.body.classList.toggle("sidebar-open", isOpen);
-
-    menuToggle.innerHTML = isOpen
-      ? '<i class="fa-solid fa-xmark"></i>'
-      : '<i class="fa-solid fa-bars"></i>';
-  });
-
-  // Close sidebar when clicking outside
-  document.body.addEventListener("click", (e) => {
-    if (
-      sidebar.classList.contains("open") &&
-      !sidebar.contains(e.target) &&
-      !menuToggle.contains(e.target)
-    ) {
-      sidebar.classList.remove("open");
-      document.body.classList.remove("sidebar-open");
-      menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
-    }
-  });
-
-  // Close when clicking on any sidebar link
-  sidebar.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      sidebar.classList.remove("open");
-      document.body.classList.remove("sidebar-open");
-      menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
-    });
-  });
-});
-
-
-
-// Initialize app
-function initApp() {
-  // Load sample data if not in localStorage
-  if (!localStorage.getItem("goals")) {
-    fetch("data/goals.json")
-      .then(res => res.json())
-      .then(data => localStorage.setItem("goals", JSON.stringify(data)));
-  }
-
-  if (!localStorage.getItem("tasks")) {
-    fetch("data/tasks.json")
-      .then(res => res.json())
-      .then(data => localStorage.setItem("tasks", JSON.stringify(data)));
-  }
-
-  if (!localStorage.getItem("resources")) {
-    fetch("data/resources.json")
-      .then(res => res.json())
-      .then(data => localStorage.setItem("resources", JSON.stringify(data)));
-  }
+// --- Helper ---
+function $id(id) {
+  return document.getElementById(id);
 }
 
-// Simple routing based on page
-function initRouting() {
+// --- AUTH PAGE (login + signup) ---
+function initAuthPage() {
   const page = document.body.getAttribute("data-page");
-  if (page === "dashboard") {
-    initDashboard();
-  } else if (page === "goals") {
-    initGoals();
-  } else if (page === "goal-detail") {
-    initGoalDetail();
-  } else if (page === "resources") {
-    initResources();
+  if (page !== "auth") return;
+
+  const loginTab = $id("login-tab");
+  const signupTab = $id("signup-tab");
+  const loginForm = $id("login-form");
+  const signupForm = $id("signup-form");
+
+  // Switch between tabs
+  loginTab?.addEventListener("click", () => {
+    loginTab.classList.add("active");
+    signupTab.classList.remove("active");
+    loginForm.classList.add("active");
+    signupForm.classList.remove("active");
+  });
+
+  signupTab?.addEventListener("click", () => {
+    signupTab.classList.add("active");
+    loginTab.classList.remove("active");
+    signupForm.classList.add("active");
+    loginForm.classList.remove("active");
+  });
+
+  // --- SIGNUP ---
+  signupForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = $id("signup-name").value.trim();
+    const email = $id("signup-email").value.trim();
+    const password = $id("signup-password").value.trim();
+
+    if (!name || !email || !password) return alert("All fields required.");
+
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    if (users.some((u) => u.email === email)) return alert("Email already exists!");
+
+    users.push({ name, email, password });
+    localStorage.setItem("users", JSON.stringify(users));
+    alert("Account created successfully. Please log in!");
+    signupForm.reset();
+    loginTab.click();
+  });
+
+  // --- LOGIN ---
+  loginForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = $id("login-email").value.trim();
+    const password = $id("login-password").value.trim();
+
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    const user = users.find((u) => u.email === email && u.password === password);
+
+    if (!user) return alert("Invalid email or password!");
+
+    localStorage.setItem("loggedInUser", JSON.stringify(user));
+    window.location.href = "dashboard.html";
+  });
+}
+
+// --- LOGOUT ---
+function logout() {
+  localStorage.removeItem("loggedInUser");
+  window.location.href = "mission-auth.html";
+}
+
+// --- PAGE PROTECTION ---
+function initAuthProtection() {
+  const page = document.body.getAttribute("data-page");
+  const protectedPages = ["dashboard", "goals", "goal-detail", "resources"];
+  const user = JSON.parse(localStorage.getItem("loggedInUser") || "null");
+
+  if (protectedPages.includes(page) && !user) {
+    window.location.href = "mission-auth.html";
   }
 }
 
-// Menu toggle for mobile
-function initMenu() {
-  const menuToggle = document.querySelector('.menu-toggle');
-  const menu = document.getElementById('menu');
+// --- HOME PAGE LOGIC ---
+function initHomePage() {
+  const page = document.body.getAttribute("data-page");
+  if (page !== "home") return;
 
-  if (menuToggle && menu) {
-    menuToggle.addEventListener('click', () => {
-      menu.classList.toggle('show'); // match your CSS
-    });
+  const startBtn = $id("start-btn");
+  startBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    const user = JSON.parse(localStorage.getItem("loggedInUser") || "null");
+    window.location.href = user ? "dashboard.html" : "mission-auth.html";
+  });
+}
+
+// --- DASHBOARD LOGIC ---
+function initDashboardPage() {
+  const page = document.body.getAttribute("data-page");
+  if (page !== "dashboard") return;
+
+  const user = JSON.parse(localStorage.getItem("loggedInUser") || "null");
+  const welcome = document.getElementById("welcome-user");
+  const logoutBtn = document.getElementById("logout-btn");
+
+  // If no user, redirect
+  if (!user) {
+    window.location.href = "mission-auth.html";
+    return;
   }
+
+  // Display name
+  if (welcome) {
+    welcome.textContent = `Welcome, ${user.name || "Missionary"}!`;
+  }
+
+  // Logout
+  logoutBtn?.addEventListener("click", () => {
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "mission-auth.html";
+  });
 }
 
 
-// Initialize everything on DOMContentLoaded
+// --- MAIN INITIALIZER ---
 window.addEventListener("DOMContentLoaded", () => {
-  initApp();
-  initRouting();
-  initMenu(); // Add menu initialization
+  console.log("Auth + Protection system initialized...");
+  initAuthPage();
+  initAuthProtection();
+  initHomePage();
+  initDashboardPage();
 });

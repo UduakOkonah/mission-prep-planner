@@ -6,6 +6,9 @@
   <link rel="stylesheet" href="styles/dashboard.css">
   <link rel="stylesheet" href="styles/dashboard-small.css">
   <link rel="stylesheet" href="styles/animations.css">
+  <!-- Google API and OAuth -->
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="https://accounts.google.com/gsi/client"></script>
 </head>
 <body>
     <header>
@@ -14,8 +17,7 @@
             <span>Mission Prep Planner</span>
         </div>
           </div>
-  <button class="menu-btn" aria-label="Open Menu">&#9776;</button>
-  <div class="user-menu">
+  <span class="menu-btn" aria-label="Open Menu">&#9776;</span>
     </header>
  <div class="dashboard-container">
 
@@ -36,10 +38,18 @@
 
     <!-- Main Content -->
     <main class="dashboard-main">
-      <section id="quote-section" class="dashboard-section">
-        <h2>Daily Scripture / Quote</h2>
-        <blockquote id="quote-text"></blockquote>
-        <p id="quote-author"></p>
+      <section id="inspiration-section" class="dashboard-section">
+        <h2>Daily Inspiration</h2>
+        <div id="inspiration-content">
+          <p>Loading today’s scripture or quote...</p>
+        </div>
+      </section>
+
+      <section id="calendar-section" class="dashboard-section">
+        <h2>Google Calendar Sync</h2>
+        <button id="authorizeBtn" class="btn">Connect Google Calendar</button>
+        <button id="signoutBtn" class="btn" style="display:none;">Sign Out</button>
+        <div id="calendarEvents" class="calendar-events"></div>
       </section>
 
       <section id="tasks-section" class="dashboard-section">
@@ -70,7 +80,10 @@
 
   <script src="scripts/storage.js"></script>
   <script src="scripts/dashboard.js"></script>
-  <script src="scripts/api.js"></script>
   <script src="scripts/menu.js"></script>
+    <!-- Your calendar script -->
+  <script src="config.js"></script>
+  <script src="scripts/calendar.js"></script>
+  
 </body>
 </html>
