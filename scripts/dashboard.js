@@ -195,6 +195,146 @@ function renderWeeklyAnalytics() {
   });
 }
 
+
+// ==========================
+// Export Summary (Print)
+// ==========================
+document.addEventListener("DOMContentLoaded", () => {
+  const exportLink = document.getElementById("exportSummaryLink");
+
+  if (exportLink) {
+    exportLink.addEventListener("click", (e) => {
+      e.preventDefault(); // prevent page reload for anchor
+
+      const goals = JSON.parse(localStorage.getItem("goals")) || [];
+      const notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+      const printGoals = document.getElementById("printGoals");
+      const printNotes = document.getElementById("printNotes");
+      const printDate = document.getElementById("printDate");
+
+      printGoals.innerHTML = "";
+      printNotes.innerHTML = "";
+      printDate.textContent = `Generated on: ${new Date().toLocaleDateString()} at ${new Date().toLocaleTimeString()}`;
+
+      // Display goals
+      if (goals.length === 0) {
+        printGoals.innerHTML = "<p>No goals available.</p>";
+      } else {
+        goals.forEach((goal, i) => {
+          const due = goal.dueDate ? ` (Due: ${goal.dueDate})` : "";
+          const progress = goal.progress ? ` - ${goal.progress}%` : "";
+          printGoals.innerHTML += `<div class="goal-item">${i + 1}. ${goal.title}${due}${progress}</div>`;
+        });
+      }
+
+      // Display notes
+      if (notes.length === 0) {
+        printNotes.innerHTML = "<p>No notes available.</p>";
+      } else {
+        notes.forEach((note, i) => {
+          printNotes.innerHTML += `<div class="note-item">${i + 1}. ${note.content || note}</div>`;
+        });
+      }
+
+      // Show printable section, print, then hide
+      const summary = document.getElementById("printSummary");
+      summary.style.display = "block";
+      window.print();
+      summary.style.display = "none";
+    });
+  }
+});
+
+// MODAL TOGGLES
+const notificationsBtn = document.getElementById('notifications-btn');
+const settingsBtn = document.getElementById('settings-btn');
+const notificationsModal = document.getElementById('notifications-modal');
+const settingsModal = document.getElementById('settings-modal');
+const closeButtons = document.querySelectorAll('.close-modal');
+
+// Open modals
+notificationsBtn.addEventListener('click', () => {
+  notificationsModal.style.display = 'block';
+});
+settingsBtn.addEventListener('click', () => {
+  settingsModal.style.display = 'block';
+});
+
+// Close modals
+closeButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    notificationsModal.style.display = 'none';
+    settingsModal.style.display = 'none';
+  });
+});
+
+// Close if user clicks outside modal
+window.addEventListener('click', (e) => {
+  if (e.target === notificationsModal) notificationsModal.style.display = 'none';
+  if (e.target === settingsModal) settingsModal.style.display = 'none';
+});
+
+function showNotifications() {
+  const users = JSON.parse(localStorage.getItem('users')) || {};
+  const currentUser = localStorage.getItem('currentUser');
+  if (!currentUser) return;
+
+  const goals = users[currentUser].goals || [];
+  let messages = [];
+
+  // Daily task reminder
+  messages.push("📝 Don't forget to check your tasks today!");
+
+  // Overdue goals
+  const now = new Date();
+  goals.forEach(goal => {
+    if (goal.deadline && new Date(goal.deadline) < now && goal.progress < 100) {
+      messages.push(`⚠️ Goal "${goal.title}" is overdue!`);
+    }
+  });
+
+  const container = document.getElementById('notifications-list');
+  container.innerHTML = messages.map(msg => `<li>${msg}</li>`).join('');
+}
+
+// Show notifications modal
+document.getElementById('notifications-btn').addEventListener('click', () => {
+  showNotifications();
+  document.getElementById('notifications-modal').style.display = 'block';
+});
+
+
+// DARK MODE
+const darkModeToggle = document.getElementById('dark-mode-toggle');
+const dashboardElements = document.querySelectorAll(
+  'body, header, .side-nav, .dashboard-main, footer, .dashboard-section, main, .goal-list, .goal-section'
+);
+
+darkModeToggle.addEventListener('change', () => {
+  dashboardElements.forEach(el => el.classList.toggle('dark-mode', darkModeToggle.checked));
+  // Save preference
+  const loggedInUser = localStorage.getItem('currentUser');
+  if (loggedInUser) {
+    const users = JSON.parse(localStorage.getItem('users')) || {};
+    users[loggedInUser].darkMode = darkModeToggle.checked;
+    localStorage.setItem('users', JSON.stringify(users));
+  }
+});
+
+// Apply saved preference
+const loggedInUser = localStorage.getItem('currentUser');
+if (loggedInUser) {
+  const users = JSON.parse(localStorage.getItem('users')) || {};
+  if (users[loggedInUser]?.darkMode) {
+    darkModeToggle.checked = true;
+    dashboardElements.forEach(el => el.classList.add('dark-mode'));
+  }
+}
+
+
+
+
 // ==========================
 // Initialize Dashboard
 // ==========================

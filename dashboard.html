@@ -9,6 +9,7 @@
   <!-- Google API and OAuth -->
   <script src="https://apis.google.com/js/api.js"></script>
   <script src="https://accounts.google.com/gsi/client"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
     <header>
@@ -32,8 +33,6 @@
         <a href="#tasks-section"><i class="fa-solid fa-list-check"></i> Checklist</a>
         <a href="#progress-section"><i class="fa-solid fa-chart-line"></i> Progress</a>
         <a href="resources.html"><i class="fa-solid fa-book"></i> Resources</a>
-        <a href="#settings"><i class="fa-solid fa-gear"></i> Settings</a>
-      </nav>
     </aside>
 
     <!-- Main Content -->
@@ -70,14 +69,49 @@
       </section>
     </main>
   </div>
-  <footer>
-        <div class="side-nav-footer">
-        <a href="#">Export/Print</a>
-        <a href="#">Notifications</a>
-        <a href="#">Settings</a>
-      </div>
-  </footer>
+  <section id="printSummary" style="display:none;">
+  <div class="print-header">
+    <h1>Mission Prep Planner Summary</h1>
+    <p id="printDate"></p>
+  </div>
 
+  <div class="goal-section">
+    <h2>Goals</h2>
+    <div id="printGoals"></div>
+  </div>
+
+  <div class="notes-section">
+    <h2>Notes</h2>
+    <div id="printNotes"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="side-nav-footer">
+    <a href="#" id="export-link">Export/Print</a>
+    <a href="#" id="notifications-btn">Notifications</a>
+    <a href="#" id="settings-btn">Settings</a>
+  </div>
+
+  <!-- Notifications Modal -->
+  <div id="notifications-modal" class="modal">
+    <div class="modal-content">
+      <h3>Notifications & Reminders</h3>
+      <ul id="notifications-list"></ul>
+      <button class="close-modal">Close</button>
+    </div>
+  </div>
+
+
+  <!-- Settings Modal -->
+  <div id="settings-modal" class="modal">
+    <div class="modal-content">
+      <h3>Settings</h3>
+      <label>
+        <input type="checkbox" id="dark-mode-toggle"> Dark Mode
+      </label>
+  </div>
+</footer>
   <script src="scripts/storage.js"></script>
   <script src="scripts/dashboard.js"></script>
   <script src="scripts/menu.js"></script>

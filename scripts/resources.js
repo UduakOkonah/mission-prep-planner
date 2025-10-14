@@ -1,49 +1,68 @@
-function initResources() {
-  renderResources();
-
+// scripts/resources.js
+document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("resource-form");
-  form.addEventListener("submit", e => {
+  const nameInput = document.getElementById("resource-name");
+  const linkInput = document.getElementById("resource-link");
+  const goalInput = document.getElementById("resource-goal");
+  const listContainer = document.getElementById("resources-list");
+
+  renderResources();
+
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
-    addResource();
+
+    const name = nameInput.value.trim();
+    const link = linkInput.value.trim();
+    const goalId = parseInt(goalInput.value.trim());
+
+    if (!name || !link || isNaN(goalId)) {
+      alert("Please fill in all fields correctly.");
+      return;
+    }
+
+    const resources = getResources();
+    const newResource = {
+      id: Date.now(),
+      name,
+      link,
+      goalId,
+      dateAdded: new Date().toLocaleDateString()
+    };
+
+    resources.push(newResource);
+    saveResources(resources);
+    renderResources();
+
+    form.reset();
   });
-}
 
-function renderResources() {
-  const container = document.getElementById("resources-list");
-  const resources = getResources();
-  container.innerHTML = "";
+  function renderResources() {
+    const resources = getResources();
+    listContainer.innerHTML = "";
 
-  resources.forEach(res => {
-    const div = document.createElement("div");
-    div.classList.add("resource-card");
-    div.innerHTML = `
-      <h3>${res.name}</h3>
-      <p>Goal ID: ${res.goalId}</p>
-      <a href="${res.link}" target="_blank">Open Resource</a>
-      <button onclick="deleteResource(${res.id})">Delete</button>
-    `;
-    container.appendChild(div);
-  });
-}
+    if (resources.length === 0) {
+      listContainer.innerHTML = "<p>No resources added yet.</p>";
+      return;
+    }
 
-function addResource() {
-  const name = document.getElementById("resource-name").value;
-  const link = document.getElementById("resource-link").value;
-  const goalId = parseInt(document.getElementById("resource-goal").value);
+    resources.forEach((res) => {
+      const div = document.createElement("div");
+      div.classList.add("resource-card");
+      div.innerHTML = `
+        <h3>${res.name}</h3>
+        <p><a href="${res.link}" target="_blank">${res.link}</a></p>
+        <p><strong>Goal ID:</strong> ${res.goalId}</p>
+        <p><small>Added on: ${res.dateAdded}</small></p>
+        <button class="delete-btn" data-id="${res.id}">Delete</button>
+      `;
 
-  if (!name || !link || !goalId) return alert("Fill all fields");
+      div.querySelector(".delete-btn").addEventListener("click", () => {
+        const updated = getResources().filter((r) => r.id !== res.id);
+        saveResources(updated);
+        renderResources();
+      });
 
-  const resources = getResources();
-  const newRes = { id: Date.now(), name, link, goalId };
-  resources.push(newRes);
-  saveResources(resources);
-  renderResources();
-  document.getElementById("resource-form").reset();
-}
-
-function deleteResource(id) {
-  let resources = getResources();
-  resources = resources.filter(r => r.id !== id);
-  saveResources(resources);
-  renderResources();
-}
+      listContainer.appendChild(div);
+    });
+  }
+});
